@@ -1,24 +1,22 @@
 package com.example.user.service;
 
-import java.util.List;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import com.example.user.UserRepository;
 import com.example.user.entity.User;
 
 @Service
 public class UserService {
 	
-	List <User> list = List.of(
-			new User("1","Kalp"),
-			new User("2","Aakash"),
-			new User("3","Fenil"));
+	@Autowired
+    private UserRepository userRepo;
 	
-	public List<User> getAllUsers(){ 
-		return list;
+	public Iterable<User> getAllUsers(){ 
+		Iterable<User> listUsers = userRepo.findAll();
+        return listUsers;
 	}
 	
 	public User getUser(String usrId) {
-		return list.stream().filter(user -> user.getId().equals(usrId)).findAny().orElse(null);
+		return userRepo.findById(usrId).orElse(null);
 	}
 }

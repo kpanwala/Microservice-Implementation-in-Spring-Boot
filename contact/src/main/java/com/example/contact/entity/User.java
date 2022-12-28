@@ -2,9 +2,20 @@ package com.example.contact.entity;
 
 import java.util.List;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+
+@Entity
+@Table(name = "User")
 public class User {
+	
+	@Id
 	private String id;
 	private String name;
+	
+	@Transient
 	private List <Contact> contacts;
 	
 	public User(String id, String name, List<Contact> contacts) {

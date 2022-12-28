@@ -1,34 +1,39 @@
 package com.example.contact.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "Contact")
 public class Contact {
 
-    private String cId;
+	@Id
+    private String id;
+	
     private String email;
     private String contactName;
     private String userId;
 
-    public Contact(String cId, String email, String contactName, String userId) {
-        this.cId = cId;
+    public Contact(String id, String email, String contactName, String userId) {
+        this.id = id;
         this.email = email;
         this.contactName = contactName;
         this.userId = userId;
     }
+    
+    public Contact() {}
 
     public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
-	public Contact() {
-
-
+    public String getId() {
+        return id;
     }
 
-    public String getcId() {
-        return cId;
-    }
-
-    public void setcId(String cId) {
-        this.cId = cId;
+    public void setid(String id) {
+        this.id = id;
     }
 
     public String getEmail() {

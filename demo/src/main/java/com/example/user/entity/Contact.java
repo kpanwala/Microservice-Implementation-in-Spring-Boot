@@ -1,30 +1,39 @@
 package com.example.user.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "Contact")
 public class Contact {
 
-    private Long cId;
+	@Id
+    private String id;
+	
     private String email;
     private String contactName;
-    private Long userId;
+    private String userId;
 
-    public Contact(Long cId, String email, String contactName, Long userId) {
-        this.cId = cId;
+    public Contact(String id, String email, String contactName, String userId) {
+        this.id = id;
         this.email = email;
         this.contactName = contactName;
         this.userId = userId;
     }
+    
+    public Contact() {}
 
-    public Contact() {
+    public void setUserId(String userId) {
+		this.userId = userId;
+	}
 
-
+    public String getId() {
+        return id;
     }
 
-    public Long getcId() {
-        return cId;
-    }
-
-    public void setcId(Long cId) {
-        this.cId = cId;
+    public void setid(String id) {
+        this.id = id;
     }
 
     public String getEmail() {
@@ -43,11 +52,7 @@ public class Contact {
         this.contactName = contactName;
     }
 
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
+	public String getUserId() {
+		return userId;
+	}
 }
